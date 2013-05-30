@@ -55,7 +55,7 @@ $expired = $timestamp - (announce_interval+min_interval);
 if (mysqli_query($db, "DELETE FROM peers WHERE info_hash='$info_hash' AND compact='$compact'") === FALSE) tracker_error('cannot process MySQL query');
 
 // delete outdated peers, by random announcing client - roughtly 1 of 6 peers runs the clean-up
-if (mt_rand(1, 6) == 6) 
+if (mt_rand(1, 64) == 1) 
 {
 if (mysqli_query($db, "DELETE FROM peers WHERE updated < '$expired'") === FALSE) tracker_error('cannot process MySQL query');
 }
@@ -94,7 +94,7 @@ $response .= 'e5:peers' . strlen($peers) . ':' . $peers . 'e';
 echo $response;
 
 // OPTIMIZE TABLE peers by random announcing client - roughtly each 64th runs the optimization
-if (mt_rand(1, 64) == 64) 
+if (mt_rand(1, 300) == 1) 
 {
 if (mysqli_query($db, "OPTIMIZE TABLE peers") === FALSE) tracker_error('cannot OPTIMIZE TABLE');
 }
