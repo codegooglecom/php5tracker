@@ -1,0 +1,2 @@
+php5Tracker - Modern and compact BitTorrent PHP tracker with small footprint on CPU, memory and db space. Short, pure procedural code which easy to understand, change and deploy.
+The tracker supports ONLY compact announcing and scraping!!!
